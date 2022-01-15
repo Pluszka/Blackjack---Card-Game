@@ -1,6 +1,9 @@
 from random import choice
 
 cards=[11,2,3,4,5,6,7,8,9,10,10,10,10]
+win='Well played, you win.'
+lose='You lose, so.'
+draw='Draw!'
 
 def deal(amount_player, amount_computer):
   player=[choice(cards) for card in range(amount_player)]
@@ -53,3 +56,14 @@ while comp_step:
     comp_step=False
 
 print(f'Your final score is equal: {player_score}\nComputer final score is equal: {computer_score}')
+
+if player_core>=21:
+  print(lose)
+elif computer_score>=21:
+  print(win)
+elif player_score>computer_score:
+  print(win)
+elif player_score<computer_score:
+  print(lose)
+else:
+  print(draw)
