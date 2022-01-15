@@ -42,5 +42,6 @@ else:
       
 if computer_score>=19:
   next_card=choice(['Y','N'])
+  if 
 
 print(f'Your final score is equal: {player_score}\nComputer final score is equal: {computer_score}')
