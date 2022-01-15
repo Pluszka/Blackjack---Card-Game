@@ -7,6 +7,14 @@ def deal(amount_player, amount_computer):
   computer=[choice(cards) for card in range(amount_computer)]
   return player, computer
 
+def next_card(person_score, person_cards, capton):
+  card=deal(1,0)[0][0]
+  person_cards.append(card)
+  person_score+=card
+  if capton:
+    print(f'Now you have these cards: {person_cards}')
+  return person_score, person_cards
+
 deal_step=True
 
 dealt_cards=deal(2,2)
@@ -22,10 +30,17 @@ if player_score>=21:
 else:
   while deal_step:
     next_cards=input(f'Your score is equal to {player_score}.\nWill you continue?(Y/N)').upper()
+    
     if next_cards=='Y':
-      card=deal(1,0)[0][0]
-      player_cards.append(card)
-      player_score+=card
-      print(f'Now you have these cards: {player_cards}')
+      result=next_card(player_score, player_cards, True)
+      player_score=result[0]
+      player_cards=result[1]
+      if player_score>=21:
+        deal_step=False
     else:
       deal_step=False
+      
+if computer_score>=19:
+  next_card=choice(['Y','N'])
+
+print(f'Your final score is equal: {player_score}\nComputer final score is equal: {computer_score}')
