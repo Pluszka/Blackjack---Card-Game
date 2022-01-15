@@ -4,6 +4,10 @@ import os
 
 clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
+drink=art.drink
+logo=art.logo
+end=art.ending
+
 cards=[11,2,3,4,5,6,7,8,9,10,10,10,10]
 win='Well played, you win.'
 lose='You lose, so sad.'
@@ -26,9 +30,9 @@ def who_won(player, computer):
   if player>=21:
     print(lose)
   elif computer>=21:
-    print(win, art.congratulations)
+    print(win, drink)
   elif player>computer:
-    print(win, art.congratulations)
+    print(win, drink)
   elif player<computer:
     print(lose)
   else:
@@ -38,7 +42,7 @@ def who_won(player, computer):
 
 def game():
   clearConsole()
-  print(art.logo)
+  print(logo)
   
   deal_step=True
   comp_step=True
@@ -85,5 +89,5 @@ def game():
     game()
 
 game()
-
-print('GG, see you next time.')
+clearConsole()
+print('GG, see you next time.', end)
