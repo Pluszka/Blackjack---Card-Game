@@ -1,4 +1,5 @@
 from random import choice
+import art
 import os
 
 clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
@@ -25,9 +26,9 @@ def who_won(player, computer):
   if player>=21:
     print(lose)
   elif computer>=21:
-    print(win)
+    print(win, art.congratulations)
   elif player>computer:
-    print(win)
+    print(win, art.congratulations)
   elif player<computer:
     print(lose)
   else:
@@ -37,7 +38,8 @@ def who_won(player, computer):
 
 def game():
   clearConsole()
-
+  print(art.logo)
+  
   deal_step=True
   comp_step=True
 
@@ -69,8 +71,8 @@ def game():
       new_card=choice(['Y','N'])
       if new_card=='Y':
         compresult=next_card(computer_score, computer_cards, False)
-        player_score=compresult[0]
-        if player_score>=21:
+        computer_score=compresult[0]
+        if computer_score>=21:
             comp_step=False
     else:
       comp_step=False
