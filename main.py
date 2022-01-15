@@ -16,6 +16,7 @@ def next_card(person_score, person_cards, capton):
   return person_score, person_cards
 
 deal_step=True
+comp_step=True
 
 dealt_cards=deal(2,2)
 player_cards=dealt_cards[0]
@@ -39,9 +40,16 @@ else:
         deal_step=False
     else:
       deal_step=False
-      
-if computer_score>=19:
-  next_card=choice(['Y','N'])
-  if 
+
+while comp_step:      
+  if computer_score>=19:
+    new_card=choice(['Y','N'])
+    if new_card=='Y':
+      compresult=next_card(computer_score, computer_cards, False)
+      player_score=compresult[0]
+      if player_score>=21:
+          comp_step=False
+  else:
+    comp_step=False
 
 print(f'Your final score is equal: {player_score}\nComputer final score is equal: {computer_score}')
