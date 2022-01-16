@@ -16,6 +16,8 @@ def deal(amount_player, amount_computer):
 def next_card(person_score, person_cards, capton):
   card=deal(1,0)[0][0]
   person_cards.append(card)
+  if card==11 and person_score>10:
+      card=1
   person_score+=card
   if capton:
     print(f'Now you have these cards: {person_cards}')
