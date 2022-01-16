@@ -57,7 +57,6 @@ def game():
   comp_step=True
 
   dealt_cards=deal(2,2)
-  print(dealt_cards)
   player_cards=dealt_cards[0]
   computer_cards=dealt_cards[1]
   card_to_show=[computer_cards[0], "?"]
@@ -81,17 +80,17 @@ def game():
         deal_step=False
 
   while comp_step:
-    if computer_score==0:
+    if computer_score==0 or computer_score>=20:
       comp_step=False 
-    if computer_score>=19:
+    elif computer_score<=19:
       new_card=choice(['Y','N'])
-      if new_card=='Y':
+      if new_card=='Y' or computer_score<11:
         compresult=next_card(computer_score, computer_cards, False)
         computer_score=compresult[0]
         if computer_score>=21:
             comp_step=False
-    else:
-      comp_step=False
+      else:
+        comp_step=False
 
   print(f'Your final score is equal to: {player_score}\nComputer final score is equal to: {computer_score}')
 
