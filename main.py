@@ -13,18 +13,27 @@ win='Well played, you win.'
 lose='You lose, so sad.'
 draw='Draw!'
 
+def blackjack(person, score):
+  if len(person)==2 and score==21:
+    return 0
+  return person
+
 def deal(amount_player, amount_computer):
   player=[choice(cards) for card in range(amount_player)]
   computer=[choice(cards) for card in range(amount_computer)]
+  player=blackjack(player, sum(player))
+  computer=blackjack(computer, sum(computer))
   return player, computer
 
 def next_card(person_score, person_cards, capton):
-  card=deal(1,0)[0][0]
-  person_cards.append(card)
-  person_score+=card
-  if capton:
-    print(f'Now you have these cards: {person_cards}')
-  return person_score, person_cards
+   card=deal(1,0)[0][0]
+   person_cards.append(card)
+   if card==11 and person_score>10:
+     card=1
+   person_score+=card
+   if capton:
+     print(f'Now you have these cards: {person_cards}')
+   return person_score, person_cards
 
 def who_won(player, computer):
   if player>21:
@@ -48,14 +57,15 @@ def game():
   comp_step=True
 
   dealt_cards=deal(2,2)
+  print(dealt_cards)
   player_cards=dealt_cards[0]
   computer_cards=dealt_cards[1]
-  card_to_show=computer_cards[1],'?'
+  card_to_show=[computer_cards[0], "?"]
   player_score=(sum(player_cards))
   computer_score=(sum(computer_cards))
 
   print(f'Here you are your cards: {player_cards}\nThat\'s a single card which belong to your opponent: {card_to_show}')
-  if player_score>=21:
+  if player_score>21:
     print(f'Your score is equal to {player_score}, you lose.')
   else:
     while deal_step:
