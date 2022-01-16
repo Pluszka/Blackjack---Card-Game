@@ -63,7 +63,7 @@ def game():
         result=next_card(player_score, player_cards, True)
         player_score=result[0]
         player_cards=result[1]
-        if player_score>=21:
+        if player_score>=21 or player_score==0:
           deal_step=False
       else:
         deal_step=False
@@ -76,7 +76,7 @@ def game():
       if new_card=='Y':
         compresult=next_card(computer_score, computer_cards, False)
         player_score=compresult[0]
-        if player_score>=21:
+        if player_score>=21 or computer_score==0:
             comp_step=False
     else:
       comp_step=False
