@@ -49,7 +49,9 @@ def game():
   computer_score=(sum(computer_cards))
 
   print(f'Here you are your cards: {player_cards}\nThat\'s a single card which belong to your opponent: {card_to_show}')
-  if player_score>=21:
+  if player_score==21:
+    player_score=0
+  if player_score>21:
     print(f'Your score is equal to {player_score}, you lose.')
   else:
     while deal_step:
@@ -64,6 +66,8 @@ def game():
       else:
         deal_step=False
 
+  if computer_score==21:
+    computer_score=0
   while comp_step:      
     if computer_score>=19:
       new_card=choice(['Y','N'])
