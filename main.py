@@ -24,9 +24,9 @@ def next_card(person_score, person_cards, capton):
   return person_score, person_cards
 
 def who_won(player, computer):
-  if player>=21:
+  if player>21:
     print(lose)
-  elif computer>=21:
+  elif computer>21:
     print(win)
   elif player>computer:
     print(win)
