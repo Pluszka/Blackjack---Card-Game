@@ -27,9 +27,9 @@ def next_card(person_score, person_cards, capton):
   return person_score, person_cards
 
 def who_won(player, computer):
-  if player>=21:
+  if player>21:
     print(lose)
-  elif computer>=21:
+  elif computer>21:
     print(win, drink)
   elif player>computer:
     print(win, drink)
@@ -59,7 +59,7 @@ def game():
     print(f'Your score is equal to {player_score}, you lose.')
   else:
     while deal_step:
-      next_cards=input(f'Your score is equal to {player_score}.\nWill you continue?(Y/N)').upper()
+      next_cards=input(f'Your score is equal to {player_score}.\nWill you continue?(Y/any button)').upper()
       
       if next_cards=='Y':
         result=next_card(player_score, player_cards, True)
@@ -84,7 +84,7 @@ def game():
   print(f'Your final score is equal to: {player_score}\nComputer final score is equal to: {computer_score}')
 
   who_won(player_score, computer_score)
-  again=input('Will you play again?(Y/N)').upper()
+  again=input('Will you play again?(Y/any button)').upper()
   if again=='Y':
     game()
 
